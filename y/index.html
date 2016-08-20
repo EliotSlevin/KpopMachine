@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Kpop Machine</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../bower_components/jQuery/dist/jquery.min.js"></script>
+    <script src="../bower_components/handlebars/handlebars.min.js"></script>
+    <script src="../bower_components/director/build/director.min.js"></script>
+    <script src="../bower_components/clipboard/dist/clipboard.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300italic,400italic|Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://use.fontawesome.com/0f4eef4a59.js"></script>
+
+    <!-- Load data before app -->
+    <script src="../js/years.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/youtube.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1>The<br> Kpop<br> Machine</h1>
+
+      <select id="year-picker">
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+      </select>
+
+      <div class="button" id="open-now-playing" onclick="openNowPlaying()">Now Playing</div>
+    </header>
+
+    <aside>      
+      <div id="player"></div>
+      <h2 id="now-playing">Now Playing</h2>
+      <div id="share-buttons"></div>
+      <div class="g-bar">
+        <h3>Up Next</h3>
+        <div class="button" onclick="skipClick()">Skip current song <i class="fa fa-step-forward" aria-hidden="true"></i></div>
+      </div>
+
+      <div id="queue">  
+      </div>
+
+      <div id="close" onclick="closeNowPlaying(this)">
+          <i class="fa fa-chevron-up" aria-hidden="true"></i>
+          Back
+      </div>
+    </aside>
+
+    <div id="videos">
+    </div>
+
+    <footer>
+        
+        <p>Sweet info right here fam</p>
+    </footer>
+
+
+  <!-- Templates -->
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="videos">
+        {{#each songs}}
+          <div class="video">
+            <img src="http://img.youtube.com/vi/{{this.[2]}}/mqdefault.jpg" onclick="videoClick({{{json this}}})">
+            <div onclick="queueClick({{{json this}}})" class="addToQueue"><i class="fa fa-plus" aria-hidden="true"></i></div>
+            <p><strong>{{this.[0]}}</strong> - {{this.[1]}}</p>
+          </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <script id="queue-template" type="text/x-handlebars-template">
+      <div class="queued-videos">
+        {{#each .}}
+          <p onclick="inQueueClick({{@index}})" ><strong>{{name}}</strong> - {{artist}}</p>
+        {{/each}}
+
+        {{#if .}}
+        {{else}}
+            <p>Your queue is empty  (ಥ﹏ಥ)<br>
+            Hit a <i class="fa fa-plus" aria-hidden="true"></i> button to add a song to your queue.</p>
+        {{/if}}
+      </div>
+    </script>
+
+    <script id="share-buttons-template" type="text/x-handlebars-template">
+       <div class="button" id="copy-url" data-clipboard-text="{{url}}" onclick="copyUrlClick(this)"><i class="fa fa-clipboard" aria-hidden="true"></i>
+ Copy youtube link</div>
+       <a href="https://www.facebook.com/sharer.php?u={{url}}" target="_blank" class="button"><i class="fa fa-facebook" aria-hidden="true"></i> Share</a>
+
+       <a href="https://twitter.com/intent/tweet?url={{url}}&text={{title}}&via={{via}}&hashtags={{hashtags}}" target="_blank" class="button"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a>
+    </script>
+
+
+  </body>
+</html>

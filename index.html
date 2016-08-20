@@ -1,1 +1,196 @@
-test
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Nostalgia Machine</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<script src="../bower_components/jQuery/dist/jquery.min.js"></script>
+
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/0f4eef4a59.js"></script>
+
+  </head>
+  <body>
+    <header class="big">
+      <h1>The<br> Kpop<br> Machine</h1>
+    </header>
+
+    <div class="landing-wrap">
+    	<div class="g-50">
+    		<p>1. Pick year</p>
+    		<select id="year-picker">
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+		      </select>
+    	</div>
+    	<div class="g-50">
+    		<p>2. Jam</p>
+    		<div class="button-big" onclick="startClick()">Hit me!</div>
+    	</div>
+
+    	<div class="g-100">
+    		<p>For the best results pick a childhood year</p>
+    	</div>
+    </div>
+    
+    <script>
+    	function startClick(){
+    		var year = $("select").val();
+    		window.location.href = window.location.href + 'y/#' + year;
+    	}
+    </script>
+
+    <style>
+
+        h1{
+            font-size: 2.5em !important;
+        }
+
+        .big{
+            position: static;
+        }
+
+        p{
+            font-size: 19px;
+            width: 100%;
+        }
+
+        html, body{
+            height: 100%;       }
+
+        body{
+            display: flex;
+            background-color: white;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .landing-wrap{
+            max-width: 400px;
+            margin: auto;
+            color: #6367E6;
+        }
+
+        .g-50{
+            width: 50%;
+            box-sizing: border-box;
+            padding: 10px;
+            float: left;
+        }
+
+        .g-100{
+            width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 10px;
+            float: left;
+        }
+
+        .kpop-landing{
+            color: white;
+            align-self: center;
+            text-decoration: none;
+            padding-left: 40px;
+        }
+
+        .kpop-landing:hover{
+            text-decoration: underline;
+        }
+
+        select{
+            margin: 0px;
+            border: none;
+            width: 100%;
+            transition: ease all 0.2s;
+        }
+
+        select:hover{
+            background-color: #6265BD;
+            color: white;
+        }
+
+
+            @-webkit-keyframes sheen {
+                  0% {
+                    -webkit-transform: skewY(-45deg) translateX(0);
+                            transform: skewY(-45deg) translateX(0);
+                  }
+                  100% {
+                    -webkit-transform: skewY(-45deg) translateX(12.5em);
+                            transform: skewY(-45deg) translateX(12.5em);
+                  }
+                }
+                @keyframes sheen {
+                  0% {
+                    -webkit-transform: skewY(-45deg) translateX(0);
+                            transform: skewY(-45deg) translateX(0);
+                  }
+                  100% {
+                    -webkit-transform: skewY(-45deg) translateX(12.5em);
+                            transform: skewY(-45deg) translateX(12.5em);
+                  }
+                }
+
+                .button-big {
+                  padding: 0.25em 0.5em;
+                  height: 60px;
+                  width: 100%;
+                  line-height: 43px;
+                  text-align: center;
+                  color: #6367E6;
+                  cursor: pointer;
+                  border: 2px solid #6367E6;
+                  font-size: 24px;
+                  display: inline-block;
+                  border-radius: 0.3em;
+                  -webkit-transition: all 0.2s ease-in-out;
+                  transition: all 0.2s ease-in-out;
+                  position: relative;
+                  overflow: hidden;
+                }
+                .button-big:before {
+                  content: "";
+                  background-color: rgba(255, 255, 255, 0.5);
+                  height: 100%;
+                  width: 3em;
+                  display: block;
+                  position: absolute;
+                  top: 0;
+                  left: -4.5em;
+                  -webkit-transform: skewX(-45deg) translateX(0);
+                          transform: skewX(-45deg) translateX(0);
+                  -webkit-transition: none;
+                  transition: none;
+                }
+                .button-big:hover {
+                  background-color: #6367E6;
+                  color: #fff;
+                  border-bottom: 4px solid #6265BD;
+                }
+                .button-big:active {
+                  border-bottom: 0px solid #6265BD;
+                }
+                .button-big:hover:before {
+                  -webkit-transform: skewX(-45deg) translateX(13.5em);
+                          transform: skewX(-45deg) translateX(13.5em);
+                  -webkit-transition: all 0.5s ease-in-out;
+                  transition: all 0.5s ease-in-out;
+                }
+
+
+        </style>
+
+    </div>
+
+  </body>
+</html>
